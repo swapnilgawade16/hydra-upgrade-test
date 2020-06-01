@@ -1,0 +1,18 @@
+version: '3'
+services:
+  hydra:
+    image: oryd/hydra:v1.0.0
+    ports:
+      - "9000:4444"
+      - "9001:4445"
+    depends_on:
+      - hydra-migrate
+    environment:
+      SECRETS_SYSTEM: "[secret1234567890]"
+      DSN: "mysql://user:secret@tcp(db:3306)/hydra?tls=false"
+      URLS_SELF_ISSUER: "https://localhost:9000"
+      URLS_CONSENT: "http://localhost:5000/hydra/consent"
+      URLS_LOGIN: "http://localhost:5000/hydra/login"
+      URLS_LOGOUT: "http://localhost:5000/hydra/logout"
+      URLS_POST_LOGOUT_REDIRECT: "http://localhost:5000/hydra/logout"
+      OAUTH2_ERROR_URL: "http://localhost:5000/hydra/error"

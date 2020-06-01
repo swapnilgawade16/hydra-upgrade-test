@@ -1,0 +1,6 @@
+version: '3'
+services:
+  hydra-migrate:
+    image: oryd/hydra:v1.4
+  hydra:
+    image: oryd/hydra:v1.4
